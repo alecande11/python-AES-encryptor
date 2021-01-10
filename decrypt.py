@@ -40,6 +40,6 @@ else:
     tag = input("Data to decrypt: ")
     if tag in data:
         pswd = getpass.getpass('Password: ')
-        print(decrypt(data[tag], pswd)[2:-1])
+        print(decrypt(data[tag], pswd).decode())
     else:
         print("Name not found")
