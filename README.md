@@ -1,4 +1,4 @@
-# python-string-encryption
+# Python AES encryptor
 Encript and decrypt strings in Python
 
 ## Usage
