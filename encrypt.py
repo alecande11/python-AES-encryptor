@@ -40,12 +40,12 @@ if not os.path.isfile('archive.crypto'):
     file.close()
 
 while True:
-    tag = input("Tag: ")
+    tag = input("Name: ")
 
     file = open("archive.crypto", "r")
     data = json.load(file)
     if tag in data:
-        print("This tag alredy exist.")
+        print("This name alredy exist.")
         response = input("Do you want to overwrite it [Y/N]: ")
         if response == 'y' or response == 'Y':
             break

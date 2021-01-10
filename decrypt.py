@@ -22,6 +22,24 @@ def decrypt(enc_dict, password):
     cipher = AES.new(private_key, AES.MODE_GCM, nonce=nonce)
 
     # decrypt the cipher text
-    decrypted = cipher.decrypt_and_verify(cipher_text, tag)
-
+    try:
+        decrypted = cipher.decrypt_and_verify(cipher_text, tag)
+    except:
+        decrypted = "ERROR: worong password"
+        
     return decrypted
+
+if not os.path.isfile('archive.crypto'):
+    print("No encripted file found")
+else:
+    file = open("archive.crypto", "r")
+    data = json.load(file)
+    print("Avaiable data:")
+    for tag in data:
+        print(f"\t{tag}")
+    tag = input("Data to decrypt: ")
+    if tag in data:
+        pswd = getpass.getpass('Password: ')
+        print(decrypt(data[tag], pswd))
+    else:
+        print("Name not found")
