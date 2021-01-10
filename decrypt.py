@@ -1,4 +1,4 @@
-from base64 import b64encode, b64decode
+from base64 import b64decode
 import hashlib
 from Cryptodome.Cipher import AES
 import os
@@ -26,7 +26,7 @@ def decrypt(enc_dict, password):
         decrypted = cipher.decrypt_and_verify(cipher_text, tag)
     except:
         decrypted = "ERROR: worong password"
-        
+
     return decrypted
 
 if not os.path.isfile('archive.crypto'):
