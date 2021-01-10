@@ -9,10 +9,10 @@ pip install -r requirements.txt
 
 Encrypt text:
 ```bash
-python3 encrypt.py
+python encrypt.py
 ```
 
 Decrypt text:
 ```bash
-python3 decrypt.py
+python decrypt.py
 ```
