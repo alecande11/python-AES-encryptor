@@ -5,6 +5,7 @@ import hashlib
 from Cryptodome.Cipher import AES
 import os
 from Cryptodome.Random import get_random_bytes
+import getpass
 
 def encrypt(plain_text, password):
     # generate a random salt
@@ -25,3 +26,9 @@ def encrypt(plain_text, password):
         'nonce': b64encode(cipher_config.nonce).decode('utf-8'),
         'tag': b64encode(tag).decode('utf-8')
     }
+
+print("AES encryptor")
+text = input("Testo da cryptare: ")
+pswd = getpass.getpass('Password: ')
+
+print(encrypt(text, pswd))
