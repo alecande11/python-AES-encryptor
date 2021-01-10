@@ -6,6 +6,7 @@ from Cryptodome.Cipher import AES
 import os
 from Cryptodome.Random import get_random_bytes
 import getpass
+import json
 
 def encrypt(plain_text, password):
     # generate a random salt
@@ -31,4 +32,30 @@ print("AES encryptor")
 text = input("Testo da cryptare: ")
 pswd = getpass.getpass('Password: ')
 
-print(encrypt(text, pswd))
+encryptedText = encrypt(text, pswd)
+
+if not os.path.isfile('archive.crypto'):
+    file = open("archive.crypto", "w+")
+    file.write("{}")
+    file.close()
+
+while True:
+    tag = input("Tag: ")
+
+    file = open("archive.crypto", "r")
+    data = json.load(file)
+    if tag in data:
+        print("This tag alredy exist.")
+        response = input("Do you want to overwrite it [Y/N]: ")
+        if response == 'y' or response == 'Y':
+            break
+    else:
+        break
+
+
+with open('archive.crypto', 'r+') as f:
+    data = json.load(f)
+    data[tag] = encryptedText
+    f.seek(0)
+    json.dump(data, f, indent=4)
+    f.truncate()
