@@ -16,3 +16,8 @@ Decrypt text:
 ```bash
 python decrypt.py
 ```
+
+Delete data:
+```bash
+python delete.py
+```
