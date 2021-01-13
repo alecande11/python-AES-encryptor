@@ -29,13 +29,13 @@ def encrypt(plain_text, password):
     }
 
 print("AES encryptor")
-text = input("Testo da cryptare: ")
+text = input("Text to be encrypted: ")
 while True:
     pswd = getpass.getpass('Password: ')
     if pswd == getpass.getpass('Re-type your password: '):
         break
     else:
-        print("Password don't match")
+        print("Passwords don't match")
 
 encryptedText = encrypt(text, pswd)
 
